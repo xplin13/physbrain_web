@@ -1,0 +1,1 @@
+{"question": "What object is being interacted with?", "answer": "The object being interacted with is a potted plant. It has green leaves and is in a gray pot. The hands are touching the pot and the stems of the plant."}
