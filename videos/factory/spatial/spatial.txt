@@ -1,0 +1,1 @@
+{"episode_index": 71984, "task": "What is the object that the right hand picks up from the cardboard box?", "sub_task": "The object is a metal workpiece, silver in color, and the right hand grasps it near the middle section."}

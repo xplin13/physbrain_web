@@ -1,0 +1,1 @@
+{"episode_index": 84966, "task": "What motions or forces are applied?", "sub_task": "The right hand applies pressure to the glue gun trigger, releasing adhesive onto the t-shirt, while the left hand holds the t-shirt steady."}
