@@ -1,0 +1,8 @@
+  {
+    "episode_index": 792,
+    "chunk_index": 0,
+    "sample_index": 2,
+    "question": "How does the roller interact with the shirt's surface?",
+    "answer": "The roller moves across the shirt's surface, moving back and forth from the left side toward the right. The left hand stabilizes the shirt, ensuring it remains flat on the table throughout the motion.",
+    "mode": "summary"
+  }
