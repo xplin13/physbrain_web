@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhysBrain: Human Egocentric Data as a Bridge from Vision Language Models to Physical Intelligence</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- CHANGE: Updated fonts: Playfair Display for titles, Source Serif 4 for abstract, Source Sans 3 for body -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <!-- Updated organization logos to reflect new affiliations -->
+            <!-- Split logos into two rows - primary (HKUST, DeepCybo) and secondary (others, larger) -->
+            <div class="org-logos">
+                <img src="imgs/HKUST.png" alt="HKUST">
+                <img src="imgs/deepcybo.png" alt="DeepCybo">
+            </div>
+            <div class="org-logos-secondary">
+                <img src="imgs/ZA.jpg" alt="Zhongguancun Academy">
+                <img src="imgs/ZIAI.jpg" alt="ZIAI">
+                <img src="imgs/HGD.jpg" alt="Harbin Institute of Technology">
+                <img src="imgs/HUST.png" alt="Huazhong University of Science and Technology">
+            </div>
+
+            <h1 class="paper-title">PhysBrain: Human Egocentric Data as a Bridge from Vision Language Models to Physical Intelligence</h1>
+            
+            <!-- Updated authors with all 11 authors from final paper -->
+            <div class="authors">
+                <a href="#">Xiaopeng Lin</a><sup>1,3,*</sup>,
+                <a href="#">Shijie Lian</a><sup>2,6,*</sup>,
+                <a href="#">Bin Yu</a><sup>2,5,*</sup>,
+                <a href="#">Ruoqi Yang</a><sup>3</sup>,
+                <a href="#">Changti Wu</a><sup>2</sup>,
+                <a href="#">Yuzhuo Miao</a><sup>2,5</sup>,
+                <a href="#">Yurun Jin</a><sup>3</sup>,
+                <a href="#">Yukun Shi</a><sup>3</sup>,
+                <a href="#">Cong Huang</a><sup>3</sup>,
+                <a href="mailto:bocheng@hkust-gz.edu.cn">Bojun Cheng</a><sup>†1</sup>,
+                <a href="mailto:kaichen@zgci.ac.cn">Kai Chen</a><sup>†2,3,4</sup>
+            </div>
+            <div class="author-equal">* Equal contribution &nbsp;&nbsp; † Corresponding author</div>
+            
+            <!-- Updated affiliations to include all 6 institutions -->
+            <div class="affiliations">
+                <sup>1</sup>The Hong Kong University of Science and Technology (Guangzhou) &nbsp;&nbsp;
+                <sup>2</sup>Zhongguancun Academy &nbsp;&nbsp;
+                <sup>3</sup>Zhongguancun Institute of Artificial Intelligence<br>
+                <sup>4</sup>DeepCybo &nbsp;&nbsp;
+                <sup>5</sup>Harbin Institute of Technology &nbsp;&nbsp;
+                <sup>6</sup>Huazhong University of Science and Technology
+            </div>
+            
+            <div class="links">
+                <a href="#" class="btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                    Paper
+                </a>
+                <a href="#" class="btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>
+                    arXiv
+                </a>
+                <!-- Updated code link to actual project URL -->
+                <a href="https://zgc-embodyai.github.io/PhysBrain/" class="btn btn-outline">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+                    Code
+                </a>
+                <a href="#" class="btn btn-outline">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8 1.79 8 4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" /></svg>
+                    Dataset
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Abstract -->
+        <section id="abstract">
+            <h2>Abstract</h2>
+            <!-- Updated abstract with exact content from final paper -->
+            <div class="abstract-content" style="font-family: 'Source Serif 4', Georgia, serif; font-size: 1.05rem; line-height: 1.75; letter-spacing: 0.01em; text-align: justify;">
+                <p>Robotic generalization relies on <span style="color: #c65102; font-style: italic;">physical intelligence</span>—the ability to reason about state changes, contact-rich interactions, and long-horizon planning under egocentric perception. While most VLMs are trained on third-person data, creating a viewpoint mismatch for humanoid robots, large-scale human egocentric videos offer a scalable alternative that naturally captures rich interaction context and causal structure. We propose an <a href="#pipeline-overview" style="color: var(--primary); text-decoration: none; border-bottom: 1px solid var(--primary);">Egocentric2Embodiment translation pipeline</a> that transforms first-person videos into multi-level, schema-driven VQA supervision with enforced evidence grounding and temporal consistency, enabling the construction of the <a href="#dataset" style="color: var(--primary); text-decoration: none; border-bottom: 1px solid var(--primary);">E2E-3M dataset</a> at scale. An egocentric-aware embodied brain, <a href="#framework" style="color: var(--primary); text-decoration: none; border-bottom: 1px solid var(--primary);">PhysBrain</a>, trained on E2E-3M, exhibits substantially improved egocentric understanding for planning tasks, provides sample-efficient VLA fine-tuning initialization, and achieves 53.9% SimplerEnv success rates—demonstrating effective transfer from human egocentric supervision to downstream robot control.</p>
+            </div>
+        </section>
+
+        <div class="section-sep"></div>
+
+        <!-- Teaser -->
+        <div class="teaser">
+            <!-- Replaced exo.png image with teaser video -->
+            <video autoplay loop muted playsinline>
+                <!-- Updated video path to videos folder -->
+                <source src="videos/teaser_video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <!-- teaser-caption is now hidden via CSS -->
+        </div>
+
+        <!-- CHANGE: Merged pipeline overview and dataset sections into one -->
+        <section id="pipeline-overview" class="pipeline-overview">
+            <h2>Egocentric2Embodiment Pipeline & E2E-3M Dataset</h2>
+            <!-- Merged two text blocks into one paragraph -->
+            <p class="pipeline-intro">
+                Human egocentric videos encode rich embodied experience, including action progression, hand-object interaction, and task-level structure. However, this experience is not directly usable for training embodied brains. Raw videos lack explicit structure, free-form language annotations are unstable, and unconstrained generation often introduces temporal ambiguity or hallucinated interactions. Our key idea is to translate egocentric human data into <strong>structured and verifiable supervision</strong> that captures the hierarchical structure of embodied behavior, spanning action semantics, temporal organization, interaction dynamics, and task-level reasoning. To this end, we design a schema-driven, rule-validated egocentric VQA data engine that systematically converts raw egocentric human videos into multi-level supervision aligned with embodied planning and interaction reasoning.
+            </p>
+            
+            <div class="pipeline-image-container">
+                <img src="imgs/pipeline.jpg" alt="Egocentric2Embodiment Translation Pipeline" class="pipeline-img">
+            </div>
+
+            <!-- CHANGE: Moved dataset stats inline -->
+            <div class="stats" style="margin-top: 40px;">
+                <div class="stat-card">
+                    <div class="stat-number">~3M</div>
+                    <div class="stat-label">VQA Corpus</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Data Sources</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">7</div>
+                    <div class="stat-label">VQA Modes</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">VLM Engines</div>
+                </div>
+            </div>
+
+            <!-- Display task_genre and vocab distribution images side by side -->
+            <!-- Removed figure captions -->
+            <div style="display: flex; gap: 30px; align-items: stretch; flex-wrap: wrap; justify-content: center;">
+                <div class="figure" style="flex: 0 0 35%; min-width: 280px; display: flex; flex-direction: column;">
+                    <div style="flex: 1; display: flex; align-items: center; justify-content: center;">
+                        <img src="imgs/task_genre.jpg" alt="Task Genre Distribution" style="width: 100%; height: 100%; object-fit: contain;">
+                    </div>
+                </div>
+
+                <div class="figure" style="flex: 0 0 60%; min-width: 350px; display: flex; flex-direction: column;">
+                    <div style="flex: 1; display: flex; align-items: center; justify-content: center;">
+                        <img src="imgs/table.jpg" alt="Vocabulary Distribution" style="width: 100%; height: 100%; object-fit: contain;">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End of merged pipeline and dataset section -->
+
+        <div class="section-sep"></div>
+    </div>
+
+    <!-- Annotation Examples Section - Redesigned with scenario tabs, mode tabs, video, and frame grid -->
+    <section class="annotation-section" id="annotation-section">
+        <div class="container">
+            <!-- Scenario Tabs -->
+            <div class="scenario-tabs">
+                <button class="scenario-tab active" data-scenario="lab">Lab</button>
+                <button class="scenario-tab" data-scenario="factory">Factory</button>
+                <button class="scenario-tab" data-scenario="household">Household</button>
+            </div>
+
+            <!-- Mode Tabs -->
+            <div class="mode-tabs-wrapper">
+                <!-- Removed mode-prev and mode-next arrow buttons completely -->
+                <div class="mode-tabs">
+                    <button class="mode-tab active" data-mode="temporal">Temporal</button>
+                    <button class="mode-tab" data-mode="attribute">Attribute</button>
+                    <button class="mode-tab" data-mode="spatial">Spatial</button>
+                    <button class="mode-tab" data-mode="reasoning">Reasoning</button>
+                    <button class="mode-tab" data-mode="trajectory">Trajectory</button>
+                    <button class="mode-tab" data-mode="mechanics">Mechanics</button>
+                    <button class="mode-tab" data-mode="summary">Summary</button>
+                </div>
+            </div>
+
+            <!-- Annotation Display -->
+            <div class="example-card" id="annotation-display">
+                <div class="qa-question" id="qa-question">
+                    What is the sequence of actions performed by the hands in this video clip?
+                </div>
+                
+                <!-- Video container with navigation arrows removed -->
+                <div class="example-video-container">
+                    <!-- Removed video-prev and video-next arrow buttons -->
+                    <video id="example-video" controls autoplay loop>
+                        <source src="videos/lab/temporal/video.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <div class="qa-answer">
+                    <div class="qa-answer-label">Answer</div>
+                    <div class="qa-answer-text" id="qa-answer">
+                        First, the right hand reaches toward the equipment on the lab bench. Then, the left hand moves to support the apparatus. Finally, both hands coordinate to position the equipment correctly.
+                    </div>
+                </div>
+
+                <!-- Frames without labels -->
+                <div class="frame-sequence" id="frame-sequence">
+                    <div><img src="videos/lab/temporal/frame_000.jpg" alt="Frame" onerror="this.src='https://placehold.co/320x180/e8e8e8/999?text=Frame'"></div>
+                    <div><img src="videos/lab/temporal/frame_001.jpg" alt="Frame" onerror="this.src='https://placehold.co/320x180/e8e8e8/999?text=Frame'"></div>
+                    <div><img src="videos/lab/temporal/frame_002.jpg" alt="Frame" onerror="this.src='https://placehold.co/320x180/e8e8e8/999?text=Frame'"></div>
+                    <div><img src="videos/lab/temporal/frame_003.jpg" alt="Frame" onerror="this.src='https://placehold.co/320x180/e8e8e8/999?text=Frame'"></div>
+                    <div><img src="videos/lab/temporal/frame_004.jpg" alt="Frame" onerror="this.src='https://placehold.co/320x180/e8e8e8/999?text=Frame'"></div>
+                    <div><img src="videos/lab/temporal/frame_005.jpg" alt="Frame" onerror="this.src='https://placehold.co/320x180/e8e8e8/999?text=Frame'"></div>
+                    <div><img src="videos/lab/temporal/frame_006.jpg" alt="Frame" onerror="this.src='https://placehold.co/320x180/e8e8e8/999?text=Frame'"></div>
+                    <div><img src="videos/lab/temporal/frame_007.jpg" alt="Frame" onerror="this.src='https://placehold.co/320x180/e8e8e8/999?text=Frame'"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Framework -->
+        <section id="framework">
+            <!-- Made Framework Architecture title larger -->
+            <h2 style="font-size: 2.4em;">Framework Architecture</h2>
+            <!-- Made description font even larger (1.4rem from 1.25rem) -->
+            <p style="text-align: center; max-width: 100%; margin: 0 auto 30px; color: #555; font-size: 1.4rem; line-height: 1.7;">
+                We evaluate the transferability of egocentric gains under two widely adopted VLA paradigms: <strong>PhysGR00T</strong> (GR00T-style) and <strong>PhysPI</strong> (Pi-style), keeping the action expert lightweight and consistent across both.
+            </p>
+            <div class="figure">
+                <img src="imgs/Framework.jpg" alt="PhysBrain Framework">
+                <!-- Removed Figure 1 caption -->
+            </div>
+            <!-- Added detailed architecture description paragraph after the figure -->
+            <p style="text-align: justify; max-width: 100%; margin: 30px auto; color: #444; font-size: 1.25rem; line-height: 1.8;">
+                <strong>(a) PhysGR00T</strong> follows the dual-system design in GR00T N1.5: the VLM plays the role of System 2 to produce high-level multimodal representations, while a Flow-Matching (FM) action expert serves as System 1 to generate continuous actions. PhysGR00T uses the last-layer VLM hidden states as the conditioning signal, with the FM expert implemented as a diffusion transformer (DiT) that denoises an action trajectory by cross-attending to VLM features.
+                <strong>(b) PhysPI</strong>, in the spirit of π<sub>0</sub>, more tightly couples the VLM backbone with the action expert through layer-wise cross-attention conditioning. Instead of only using the last VLM layer, PhysPI conditions the DiT blocks with multiple VLM layers, injecting them layer-wise into the action expert. This stronger coupling allows egocentric improvements distributed across VLM layers to be more effectively utilized for control.
+            </p>
+        </section>
+
+        <div class="section-sep"></div>
+
+        <!-- Results -->
+        <section id="results">
+            <h2>Experimental Results</h2>
+
+            <div class="figure">
+                <!-- CHANGE: Replaced Figure1_v3.jpg with icml_overall.jpg -->
+                <img src="imgs/icml_overall.jpg" alt="Egocentric VLM and VLA Performance">
+            </div>
+
+            <!-- Restyled table to match academic paper style with horizontal rules only -->
+            <h3 style="text-align: center; margin-top: 50px;">Egocentric Understanding Evaluation (EgoThink)</h3>
+            <p style="text-align: center; color: #555;">
+                Results evaluating the egocentric understanding capabilities of VLM models using the EgoThink benchmark. Best results in <strong>bold</strong>.
+            </p>
+            
+            <!-- Increased table font size from 0.95em to 1.15em -->
+            <div style="overflow-x: auto; margin: 30px auto;">
+                <table style="width: 100%; border-collapse: collapse; font-family: 'Source Serif 4', serif; font-size: 1.15em;">
+                    <!-- Top border -->
+                    <thead>
+                        <!-- Increased padding for larger table cells -->
+                        <tr style="border-top: 2px solid #333; border-bottom: 1px solid #333;">
+                            <th style="padding: 14px 16px; text-align: left; font-weight: 600;">Method</th>
+                            <th style="padding: 14px 12px; text-align: center; font-weight: 600;">Activity</th>
+                            <th style="padding: 14px 12px; text-align: center; font-weight: 600;">Forecast</th>
+                            <th style="padding: 14px 12px; text-align: center; font-weight: 600;">Localization</th>
+                            <th style="padding: 14px 12px; text-align: center; font-weight: 600;">Object</th>
+                            <th style="padding: 14px 12px; text-align: center; font-weight: 600;">Planning</th>
+                            <th style="padding: 14px 12px; text-align: center; font-weight: 600;">Reasoning</th>
+                            <th style="padding: 14px 12px; text-align: center; font-weight: 600;">Average</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- General VLM Section Header -->
+                        <tr>
+                            <td colspan="8" style="padding: 12px 16px; text-align: center; font-weight: 600; font-size: 1em;">General VLM</td>
+                        </tr>
+                        <!-- Increased cell padding throughout table -->
+                        <tr>
+                            <td style="padding: 10px 16px; color: #444;">GPT-4 <span style="color: #666; font-size: 0.85em;">(Achiam et al., 2023)</span></td>
+                            <td style="padding: 10px 12px; text-align: center;"><strong>70.5</strong></td>
+                            <td style="padding: 10px 12px; text-align: center;">61.5</td>
+                            <td style="padding: 10px 12px; text-align: center;"><strong>88.5</strong></td>
+                            <td style="padding: 10px 12px; text-align: center;"><strong>79</strong></td>
+                            <td style="padding: 10px 12px; text-align: center;">35.5</td>
+                            <td style="padding: 10px 12px; text-align: center;"><strong>65.3</strong></td>
+                            <td style="padding: 10px 12px; text-align: center;"><strong>67.4</strong></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px 16px; color: #444;">MiniGPT-4-7B <span style="color: #666; font-size: 0.85em;">(Zhu et al., 2023)</span></td>
+                            <td style="padding: 10px 12px; text-align: center;">50</td>
+                            <td style="padding: 10px 12px; text-align: center;">15.5</td>
+                            <td style="padding: 10px 12px; text-align: center;">59</td>
+                            <td style="padding: 10px 12px; text-align: center;">48</td>
+                            <td style="padding: 10px 12px; text-align: center;">13</td>
+                            <td style="padding: 10px 12px; text-align: center;">32</td>
+                            <td style="padding: 10px 12px; text-align: center;">36.8</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px 16px; color: #444;">LLaVA-1.5-7B <span style="color: #666; font-size: 0.85em;">(Liu et al., 2024)</span></td>
+                            <td style="padding: 10px 12px; text-align: center;">39.5</td>
+                            <td style="padding: 10px 12px; text-align: center;">50</td>
+                            <td style="padding: 10px 12px; text-align: center;">74</td>
+                            <td style="padding: 10px 12px; text-align: center;">62</td>
+                            <td style="padding: 10px 12px; text-align: center;">25.5</td>
+                            <td style="padding: 10px 12px; text-align: center;">51</td>
+                            <td style="padding: 10px 12px; text-align: center;">51.2</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px 16px; color: #444;">LLaMA-3.2-11B <span style="color: #666; font-size: 0.85em;">(Dubey et al., 2024)</span></td>
+                            <td style="padding: 10px 12px; text-align: center;">33.5</td>
+                            <td style="padding: 10px 12px; text-align: center;">50</td>
+                            <td style="padding: 10px 12px; text-align: center;">59</td>
+                            <td style="padding: 10px 12px; text-align: center;">64</td>
+                            <td style="padding: 10px 12px; text-align: center;">41</td>
+                            <td style="padding: 10px 12px; text-align: center;">48.7</td>
+                            <td style="padding: 10px 12px; text-align: center;">50.4</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #ddd;">
+                            <td style="padding: 10px 16px; color: #444;">Qwen-2.5-VL-7B <span style="color: #666; font-size: 0.85em;">(Bai et al., 2025c)</span></td>
+                            <td style="padding: 10px 12px; text-align: center;">56.5</td>
+                            <td style="padding: 10px 12px; text-align: center;">54</td>
+                            <td style="padding: 10px 12px; text-align: center;">71.5</td>
+                            <td style="padding: 10px 12px; text-align: center;">64.7</td>
+                            <td style="padding: 10px 12px; text-align: center;">32</td>
+                            <td style="padding: 10px 12px; text-align: center;">60</td>
+                            <td style="padding: 10px 12px; text-align: center;">57.3</td>
+                        </tr>
+                        
+                        <!-- Embodied Brain Section Header -->
+                        <tr>
+                            <td colspan="8" style="padding: 12px 16px; text-align: center; font-weight: 600; font-size: 1em;">Embodied Brain</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px 16px; color: #444;">VST-RL-7B <span style="color: #666; font-size: 0.85em;">(Yang et al., 2025a)</span></td>
+                            <td style="padding: 10px 12px; text-align: center;">53</td>
+                            <td style="padding: 10px 12px; text-align: center;">56</td>
+                            <td style="padding: 10px 12px; text-align: center;">70.5</td>
+                            <td style="padding: 10px 12px; text-align: center;">67.7</td>
+                            <td style="padding: 10px 12px; text-align: center;">17</td>
+                            <td style="padding: 10px 12px; text-align: center;">63.7</td>
+                            <td style="padding: 10px 12px; text-align: center;">56.2</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #ddd;">
+                            <td style="padding: 10px 16px; color: #444;">RoboBrain2.0-7B <span style="color: #666; font-size: 0.85em;">(Team et al., 2025)</span></td>
+                            <td style="padding: 10px 12px; text-align: center;">36</td>
+                            <td style="padding: 10px 12px; text-align: center;">49.5</td>
+                            <td style="padding: 10px 12px; text-align: center;">78</td>
+                            <td style="padding: 10px 12px; text-align: center;">61.3</td>
+                            <td style="padding: 10px 12px; text-align: center;">37</td>
+                            <td style="padding: 10px 12px; text-align: center;">52.7</td>
+                            <td style="padding: 10px 12px; text-align: center;">53.1</td>
+                        </tr>
+                        
+                        <!-- PhysBrain row with cream/yellow highlight -->
+                        <tr style="background: #fef9e7; border-bottom: 2px solid #333;">
+                            <td style="padding: 10px 16px; color: #333;"><strong>PhysBrain</strong> <span style="color: #3b82f6; font-size: 0.85em;">(ours)</span></td>
+                            <td style="padding: 10px 12px; text-align: center;"><strong>70</strong></td>
+                            <td style="padding: 10px 12px; text-align: center;">53.5</td>
+                            <td style="padding: 10px 12px; text-align: center;">77</td>
+                            <td style="padding: 10px 12px; text-align: center;">65.3</td>
+                            <td style="padding: 10px 12px; text-align: center;"><strong>64.5</strong></td>
+                            <td style="padding: 10px 12px; text-align: center;">58</td>
+                            <td style="padding: 10px 12px; text-align: center;"><u>64.3</u></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="text-align: center; max-width: 100%; margin: 20px auto 0; font-size: 1.05em; color: #555;">
+                PhysBrain achieves <strong>64.3%</strong> average on EgoThink, ranking second only to GPT-4 (67.4%) while significantly outperforming all other 7B-scale models, especially on <strong>Planning</strong> (64.5% vs next best 41.0%).
+            </p>
+        </section>
+
+        <div class="section-sep"></div>
+
+        <!-- Citation -->
+        <section id="citation">
+            <h2>Citation</h2>
+            <div class="bibtex-wrapper">
+                <!-- Updated BibTeX with all 11 authors -->
+                <div class="bibtex">
+                    <button class="copy-btn" onclick="copyBibtex()">Copy</button>
+@article{lin2025physbrain,
+  title={PhysBrain: Human Egocentric Data as a Bridge from Vision Language Models to Physical Intelligence},
+  author={Lin, Xiaopeng and Lian, Shijie and Yu, Bin and Yang, Ruoqi and Wu, Changti and Miao, Yuzhuo and Jin, Yurun and Shi, Yukun and Huang, Cong and Cheng, Bojun and Chen, Kai},
+  journal={arXiv preprint},
+  year={2025}
+}
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="org-logos">
+            <img src="imgs/HKUST.png" alt="HKUST">
+            <img src="imgs/deepcybo.png" alt="DeepCybo">
+        </div>
+        <!-- Added second row for remaining logos -->
+        <div class="org-logos-secondary">
+            <img src="imgs/ZA.jpg" alt="Zhongguancun Academy">
+            <img src="imgs/ZIAI.jpg" alt="Zhongguancun Institute of AI">
+            <img src="imgs/HGD.jpg" alt="Harbin Institute of Technology">
+            <img src="imgs/HUST.png" alt="Huazhong University of Science and Technology">
+        </div>
+        <!-- Updated correspondence emails -->
+        <p>Contact: <a href="mailto:bocheng@hkust-gz.edu.cn" style="color: var(--primary);">bocheng@hkust-gz.edu.cn</a>, <a href="mailto:kaichen@zgci.ac.cn" style="color: var(--primary);">kaichen@zgci.ac.cn</a></p>
+        <p style="margin-top: 10px;">&copy; 2025 PhysBrain Team. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function copyBibtex() {
+            const bibtex = document.querySelector('.bibtex').innerText.replace('Copy', '').trim();
+            navigator.clipboard.writeText(bibtex).then(() => {
+                const btn = document.querySelector('.copy-btn');
+                btn.textContent = 'Copied!';
+                setTimeout(() => btn.textContent = 'Copy', 2000);
+            });
+        }
+
+        // Annotation data structure
+        const annotationData = {
+            lab: {
+                temporal: {
+                    question: "What happens first, then, and finally within this sequence?",
+                    answer: "Initially, the right hand lifts a purple block labeled “10” from the surface. Then, the right hand moves the block toward the circular clock toy. Finally, the right hand places the block into its corresponding slot on the toy and releases it.",
+                    video: "videos/lab/temporal/video.mp4",
+                    frames: Array.from({length: 8}, (_, i) => `videos/lab/temporal/frame_${String(i).padStart(3, '0')}.jpg`)
+                },
+                attribute: {
+                    question: "What attribute of the object helps keep the cards together during handling?",
+                    answer: "The deck of cards is held together by an elastic band wrapped around it, which keeps the cards aligned and prevents them from separating when a hand moves or grasps the deck.",
+                    video: "videos/lab/attribute/video.mp4",
+                    frames: Array.from({length: 8}, (_, i) => `videos/lab/attribute/frame_${String(i).padStart(3, '0')}.jpg`)
+                },
+                spatial: {
+                    question: "How does the roller interact with the shirt's surface?",
+                    answer: "The roller moves across the shirt's surface, moving back and forth from the left side toward the right. The left hand stabilizes the shirt, ensuring it remains flat on the table throughout the motion.",
+                    video: "videos/lab/spatial/video.mp4",
+                    frames: Array.from({length: 8}, (_, i) => `videos/lab/spatial/frame_${String(i).padStart(3, '0')}.jpg`)
+                },
+                reasoning: {
+                    question: "What is the immediate purpose of the right hand's action on the bookshelf?",
+                    answer: "The right hand removes a book from the bookshelf, suggesting the immediate purpose is to take out the book for use or relocation.",
+                    video: "videos/lab/reasoning/video.mp4",
+                    frames: Array.from({length: 8}, (_, i) => `videos/lab/reasoning/frame_${String(i).padStart(3, '0')}.jpg`)
+                },
+                trajectory: {
+                    question: "What is the trajectory of the right hand's motion with the purell bottle?",
+                    answer: "The right hand initially reaches toward the Purell bottle on the table, then lifts it upward and slightly to the right. The hand moves the bottle over the open box and releases it, allowing the bottle to drop inside.",
+                    video: "videos/lab/trajectory/video.mp4",
+                    frames: Array.from({length: 8}, (_, i) => `videos/lab/trajectory/frame_${String(i).padStart(3, '0')}.jpg`)
+                },
+                mechanics: {
+                    question: "How is the croissant being manipulated in these frames?",
+                    answer: "The right hand initially grasps the croissant and lifts it away from the blue bowl. Then, the hand moves the croissant towards the edge of the table, maintaining a firm grip throughout the sequence.",
+                    video: "videos/lab/mechanics/video.mp4",
+                    frames: Array.from({length: 8}, (_, i) => `videos/lab/mechanics/frame_${String(i).padStart(3, '0')}.jpg`)
+                },
+                summary: {
+                    question: "What happens in this 2-second snippet?",
+                    answer: "Initially, the right hand picks up a lid while the left hand holds a cup. Then, the right hand aligns the lid with the cup and presses it down to secure it. Finally, both hands work together to ensure the lid is tightly closed on the cup.",
+                    video: "videos/lab/summary/video.mp4",
+                    frames: Array.from({length: 8}, (_, i) => `videos/lab/summary/frame_${String(i).padStart(3, '0')}.jpg`)
+                }
+            },
+            factory: {
+                temporal: {
+                    question: "How does the motion unfold over time?",
+                    answer: "Initially, the right hand picks a small metal piece from the blue bin. Then, the left hand holds another metal piece steady. After that, the right hand brings the picked piece closer to the one held by the left hand. Finally, both hands align the pieces together.",
+                    video: "videos/factory/temporal/video.mp4",
+                    frames: Array.from({length: 8}, (_, i) => `videos/factory/temporal/frame_${String(i).padStart(3, '0')}.jpg`)
+                },
+                attribute: {
+                    question: "What is the color of the object the hand is touching?",
+                    answer: "The object the hand is touching is a pink plastic camera-shaped item.",
+                    video: "videos/factory/attribute/video.mp4",
+                    frames: Array.from({length: 8}, (_, i) => `videos/factory/attribute/frame_${String(i).padStart(3, '0')}.jpg`)
+                },
+                spatial: {
+                    question: "What is the object that the right hand picks up from the cardboard box?",
+                    answer: "The object is a metal workpiece, silver in color, and the right hand grasps it near the middle section.",
+                    video: "videos/factory/spatial/video.mp4",
+                    frames: Array.from({length: 8}, (_, i) => `videos/factory/spatial/frame_${String(i).padStart(3, '0')}.jpg`)
+                },
+                reasoning: {
+                    question: "What motions or forces are applied?",
+                    answer: "The right hand applies pressure to the glue gun trigger, releasing adhesive onto the t-shirt, while the left hand holds the t-shirt steady.",
+                    video: "videos/factory/reasoning/video.mp4",
+                    frames: Array.from({length: 8}, (_, i) => `videos/factory/reasoning/frame_${String(i).padStart(3, '0')}.jpg`)
+                },
+                trajectory: {
+                    question: "Which direction does the motion take?",
+                    answer: "The right hand picks up the hammer from the table and moves it upward, preparing to strike the metal piece held by the left hand.",
+                    video: "videos/factory/trajectory/video.mp4",
+                    frames: Array.from({length: 8}, (_, i) => `videos/factory/trajectory/frame_${String(i).padStart(3, '0')}.jpg`)
+                },
+                mechanics: {
+                    question: "What technique is used to perform this action?",
+                    answer: "The right hand uses a grasp motion to pick up the metal blank and then places it into the machine.",
+                    video: "videos/factory/mechanics/video.mp4",
+                    frames: Array.from({length: 8}, (_, i) => `videos/factory/mechanics/frame_${String(i).padStart(3, '0')}.jpg`)
+                },
+                summary: {
+                    question: "What activity is taking place?",
+                    answer: "The person is assembling two metal parts together, holding one part in each hand and then joining them.",
+                    video: "videos/factory/summary/video.mp4",
+                    frames: Array.from({length: 8}, (_, i) => `videos/factory/summary/frame_${String(i).padStart(3, '0')}.jpg`)
+                }
+            },
+            household: {
+                temporal: {
+                    question: "What happens first, then next, and finally?",
+                    answer: "Initially, the right hand holds a paintbrush and begins applying paint to the wooden post. Then, the right hand continues to move the brush upwards along the post, covering more surface area. After that, the right hand reaches the top of the post, ensuring the paint is evenly spread. Finally, the right hand lowers the brush, completing the painting task on the post.",
+                    video: "videos/household/temporal/video.mp4",
+                    frames: Array.from({length: 8}, (_, i) => `videos/household/temporal/frame_${String(i).padStart(3, '0')}.jpg`)
+                },
+                attribute: {
+                    question: "What object is being interacted with?",
+                    answer: "The object being interacted with is a potted plant. It has green leaves and is in a gray pot. The hands are touching the pot and the stems of the plant.",
+                    video: "videos/household/attribute/video.mp4",
+                    frames: Array.from({length: 8}, (_, i) => `videos/household/attribute/frame_${String(i).padStart(3, '0')}.jpg`)
+                },
+                spatial: {
+                    question: "What spatial relationships are visible?",
+                    answer: "The right hand holds a spoon above a bowl filled with a mixture, while the left hand holds another spoon inside the same bowl. The bowls are placed on the countertop near the sink, with various kitchen items such as a cutting board, glasses, and bottles arranged around.",
+                    video: "videos/household/spatial/video.mp4",
+                    frames: Array.from({length: 8}, (_, i) => `videos/household/spatial/frame_${String(i).padStart(3, '0')}.jpg`)
+                },
+                reasoning: {
+                    question: "What effect does this action likely achieve?",
+                    answer: "The right hand stirs the contents of the pot with a ladle, then scoops some of the soup into a red bowl held by the left hand, suggesting the intent to serve the soup.",
+                    video: "videos/household/reasoning/video.mp4",
+                    frames: Array.from({length: 8}, (_, i) => `videos/household/reasoning/frame_${String(i).padStart(3, '0')}.jpg`)
+                },
+                trajectory: {
+                    question: "What path does the hand or object follow?",
+                    answer: "The right hand holding the knife follows a vertical downward path to cut through the meat, while the left hand uses chopsticks to hold the meat steady.",
+                    video: "videos/household/trajectory/video.mp4",
+                    frames: Array.from({length: 8}, (_, i) => `videos/household/trajectory/frame_${String(i).padStart(3, '0')}.jpg`)
+                },
+                mechanics: {
+                    question: "What motions or forces are applied?",
+                    answer: "The right hand holds a pen and moves it in a circular motion to fill in a section of the drawing, while the left hand stabilizes the notebook by holding it down.",
+                    video: "videos/household/mechanics/video.mp4",
+                    frames: Array.from({length: 8}, (_, i) => `videos/household/mechanics/frame_${String(i).padStart(3, '0')}.jpg`)
+                },
+                summary: {
+                    question: "What activity is taking place?",
+                    answer: "Initially, the left hand holds the vacuum cleaner's hose while the right hand holds a separate attachment. Then, the right hand connects the attachment to the hose. Finally, both hands hold the vacuum cleaner as it is used on the carpet.",
+                    video: "videos/household/summary/video.mp4",
+                    frames: Array.from({length: 8}, (_, i) => `videos/household/summary/frame_${String(i).padStart(3, '0')}.jpg`)
+                }
+            }
+        };
+
+        let currentScenario = 'lab'; // Default scenario
+        let currentMode = 'temporal'; // Default mode
+
+        const modeTabsContainer = document.querySelector('.mode-tabs');
+        // const modePrevBtn = document.getElementById('mode-prev');
+        // const modeNextBtn = document.getElementById('mode-next');
+
+        const modes = ['temporal', 'attribute', 'spatial', 'reasoning', 'trajectory', 'mechanics', 'summary'];
+        
+        // Mode navigation functions for cycling through modes
+        function navigateMode(direction) {
+            const modes = ['temporal', 'attribute', 'spatial', 'reasoning', 'trajectory', 'mechanics', 'summary'];
+            const currentIndex = modes.indexOf(currentMode);
+            let newIndex;
+            
+            if (direction === 'next') {
+                newIndex = (currentIndex + 1) % modes.length;
+            } else {
+                newIndex = (currentIndex - 1 + modes.length) % modes.length;
+            }
+            
+            currentMode = modes[newIndex];
+            updateModeTabsUI();
+            loadAnnotation();
+        }
+
+        function updateModeTabsUI() {
+            document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
+            document.querySelector(`.mode-tab[data-mode="${currentMode}"]`).classList.add('active');
+        }
+
+        function loadAnnotation() {
+            const data = annotationData[currentScenario][currentMode];
+            
+            document.getElementById('qa-question').textContent = data.question;
+            document.getElementById('qa-answer').textContent = data.answer;
+            
+            const video = document.getElementById('example-video');
+            video.src = data.video;
+            video.load();
+            
+            const frameContainer = document.getElementById('frame-sequence');
+            frameContainer.innerHTML = data.frames.map((src) => `
+                <div>
+                    <img src="${src}" alt="Frame" onerror="this.src='https://placehold.co/320x180/e8e8e8/999?text=Frame'">
+                </div>
+            `).join('');
+        }
+
+
+        // Removed event listeners for mode-prev and mode-next buttons as they were removed
+        // document.getElementById('video-prev').addEventListener('click', () => navigateMode('prev'));
+        // document.getElementById('video-next').addEventListener('click', () => navigateMode('next'));
+
+        // Scenario tab click handlers
+        document.querySelectorAll('.scenario-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.scenario-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                currentScenario = this.dataset.scenario;
+                // Reset mode to temporal when scenario changes
+                document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
+                document.querySelector('.mode-tab[data-mode="temporal"]').classList.add('active');
+                currentMode = 'temporal';
+                loadAnnotation();
+            });
+        });
+
+        // Mode tab click handlers
+        document.querySelectorAll('.mode-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                currentMode = this.dataset.mode;
+                loadAnnotation();
+            });
+        });
+
+        // Initialize the display with default values
+        document.addEventListener('DOMContentLoaded', () => {
+            loadAnnotation();
+        });
+    </script>
+</body>
+</html>
