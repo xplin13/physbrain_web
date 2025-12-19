@@ -1,0 +1,1 @@
+{"episode_index": 257803, "task": "What is the color of the object the hand is touching?", "sub_task": "The object the hand is touching is a pink plastic camera-shaped item."}
