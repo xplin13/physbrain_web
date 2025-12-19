@@ -1,0 +1,1 @@
+{"episode_index": 39790, "task": "Which direction does the motion take?", "sub_task": "The right hand picks up the hammer from the table and moves it upward, preparing to strike the metal piece held by the left hand."}
