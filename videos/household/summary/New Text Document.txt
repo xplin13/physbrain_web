@@ -1,0 +1,1 @@
+{"question": "What activity is taking place?", "answer": "Initially, the left hand holds the vacuum cleaner's hose while the right hand holds a separate attachment. Then, the right hand connects the attachment to the hose. Finally, both hands hold the vacuum cleaner as it is used on the carpet."}
