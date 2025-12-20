@@ -961,3 +961,10 @@ footer .org-logos img {
     font-size: 1.7rem;
   }
 }
+
+.section-title-mono {
+    font-family: "Source Sans 3", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+}
+
