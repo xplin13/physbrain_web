@@ -1193,3 +1193,56 @@ footer .org-logos img {
     }
 }
 
+/* ============================================
+   Ablation Studies Section Styles
+   ============================================ */
+
+.ablation-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.ablation-card {
+    background: linear-gradient(135deg, #fafbfc 0%, #f5f7fa 100%);
+    border-radius: 16px;
+    padding: 30px;
+    border: 1px solid #e8ecf0;
+}
+
+.ablation-subtitle {
+    font-family: "Source Sans 3", system-ui, sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 12px;
+    text-align: left;
+}
+
+.ablation-desc {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.ablation-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Source Serif 4', serif;
+    font-size: 1em;
+}
+
+.ablation-table td,
+.ablation-table th {
+    border: none;
+}
+
+@media (max-width: 1000px) {
+    .ablation-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}
+
