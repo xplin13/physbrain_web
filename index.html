@@ -239,6 +239,111 @@
     </section>
 
     <div class="container">
+        
+        <section id="human-evaluation">
+            <h2 style="font-size: 2.4em;">Data Quality & Human Evaluation</h2>
+            <p style="text-align: center; max-width: 950px; margin: 0 auto 30px; color: #555; font-size: 1.2rem; line-height: 1.7;">
+                To rigorously assess the quality of the E2E-3M dataset and the effectiveness of our deterministic rule validation, we conducted a human evaluation protocol across all VQA reasoning schemas. We sampled <strong>100 instances per schema (600 in total)</strong> and compared the annotation accuracy before and after applying the rule checker.
+            </p>
+
+            <h3 class="section-title-mono" style="text-align: center; margin-top: 40px;">
+                Accuracy by Schema (Before vs. After Rule Checking)
+            </h3>
+
+            <div style="overflow-x: auto; margin: 30px auto; max-width: 850px;">
+                <table style="width: 100%; border-collapse: collapse; font-family: 'Source Serif 4', serif; font-size: 1.15em;">
+                    <thead>
+                        <tr style="border-top: 2px solid #333; border-bottom: 1px solid #333;">
+                            <th style="padding: 14px 16px; text-align: left; font-weight: 600;">Schema</th>
+                            <th style="padding: 14px 12px; text-align: center; font-weight: 600;">Sample Size</th>
+                            <th style="padding: 14px 12px; text-align: center; font-weight: 600;">Accuracy Before</th>
+                            <th style="padding: 14px 12px; text-align: center; font-weight: 600;">Accuracy After</th>
+                            <th style="padding: 14px 12px; text-align: center; font-weight: 600;">Gain</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid #eee;">
+                            <td style="padding: 10px 16px; color: #444;">Summary</td>
+                            <td style="text-align:center;">100</td>
+                            <td style="text-align:center;">84.0%</td>
+                            <td style="text-align:center;">93.0%</td>
+                            <td style="text-align:center; color: #10b981; font-weight: 600;">+9.0</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #eee;">
+                            <td style="padding: 10px 16px; color: #444;">Temporal</td>
+                            <td style="text-align:center;">100</td>
+                            <td style="text-align:center;">72.0%</td>
+                            <td style="text-align:center;">90.0%</td>
+                            <td style="text-align:center; color: #10b981; font-weight: 600;">+18.0</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #eee;">
+                            <td style="padding: 10px 16px; color: #444;">Reasoning</td>
+                            <td style="text-align:center;">100</td>
+                            <td style="text-align:center;">77.0%</td>
+                            <td style="text-align:center;">89.0%</td>
+                            <td style="text-align:center; color: #10b981; font-weight: 600;">+12.0</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #eee;">
+                            <td style="padding: 10px 16px; color: #444;">Spatial</td>
+                            <td style="text-align:center;">100</td>
+                            <td style="text-align:center;">82.0%</td>
+                            <td style="text-align:center;">92.0%</td>
+                            <td style="text-align:center; color: #10b981; font-weight: 600;">+10.0</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #eee;">
+                            <td style="padding: 10px 16px; color: #444;">Mechanics</td>
+                            <td style="text-align:center;">100</td>
+                            <td style="text-align:center;">79.0%</td>
+                            <td style="text-align:center;">91.0%</td>
+                            <td style="text-align:center; color: #10b981; font-weight: 600;">+12.0</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #eee;">
+                            <td style="padding: 10px 16px; color: #444;">Attribute</td>
+                            <td style="text-align:center;">100</td>
+                            <td style="text-align:center;">81.0%</td>
+                            <td style="text-align:center;">94.0%</td>
+                            <td style="text-align:center; color: #10b981; font-weight: 600;">+13.0</td>
+                        </tr>
+                        <tr style="border-top: 1px solid #ddd; background: #fef9e7; border-bottom: 2px solid #333;">
+                            <td style="padding: 10px 16px; color: #333;"><strong>Overall</strong></td>
+                            <td style="text-align:center;"><strong>600</strong></td>
+                            <td style="text-align:center;"><strong>79.2%</strong></td>
+                            <td style="text-align:center;"><strong>91.5%</strong></td>
+                            <td style="text-align:center; color: #10b981; font-weight: 600;"><strong>+12.3</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="section-title-mono" style="text-align: center; margin-top: 50px;">
+                Error Analysis & Failure Modes
+            </h3>
+            
+            <div style="max-width: 950px; margin: 20px auto; display: flex; gap: 30px; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 300px; background: #fffcfc; padding: 25px 30px; border-radius: 8px; border: 1px solid #ffe5e5;">
+                    <h4 style="margin-top: 0; color: #d32f2f; font-size: 1.15rem; border-bottom: 1px solid #ffe5e5; padding-bottom: 10px;">Before Rule Checking</h4>
+                    <ol style="margin-bottom: 0; padding-left: 20px; color: #555; line-height: 1.6;">
+                        <li style="margin-bottom: 8px;">Missing or incorrect temporal connectors in multi-frame snippets.</li>
+                        <li style="margin-bottom: 8px;">Ambiguous hand attribution when no hand or only one hand was visible.</li>
+                        <li style="margin-bottom: 8px;">Underspecified object attributes in attribute-focused prompts.</li>
+                        <li style="margin-bottom: 8px;">Answers over-influenced by prior knowledge rather than grounded in visible evidence.</li>
+                        <li style="margin-bottom: 8px;">Ambiguous action intent (e.g., plugging vs. unplugging a device).</li>
+                        <li>Overly generic answers missing the key distinguishing detail required by the prompt.</li>
+                    </ol>
+                </div>
+                
+                <div style="flex: 1; min-width: 300px; background: #f8fcf8; padding: 25px 30px; border-radius: 8px; border: 1px solid #dcfce7;">
+                    <h4 style="margin-top: 0; color: #15803d; font-size: 1.15rem; border-bottom: 1px solid #dcfce7; padding-bottom: 10px;">After Rule Checking (Residual Errors)</h4>
+                    <ul style="margin-bottom: 0; padding-left: 20px; color: #555; line-height: 1.6;">
+                        <li style="margin-bottom: 8px;">Severe occlusion</li>
+                        <li style="margin-bottom: 8px;">Borderline frame ambiguity</li>
+                        <li>Occasional over-correction in snippets with minimal motion</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-sep"></div>
         <section id="framework">
             <h2 style="font-size: 2.4em;">Framework Architecture</h2>
             <p style="text-align: center; max-width: 100%; margin: 0 auto 30px; color: #555; font-size: 1.4rem; line-height: 1.7;">
@@ -921,9 +1026,7 @@
         <section id="ablation-studies">
             <h2>Ablation Studies</h2>
             
-            <!-- Two tables side by side -->
             <div class="ablation-grid">
-                <!-- Left: Dataset Impact -->
                 <div class="ablation-card">
                     <h3 class="ablation-subtitle">Dataset Impact Across VLM Architectures</h3>
                     <p class="ablation-desc">
@@ -974,7 +1077,6 @@
                     </div>
                 </div>
 
-                <!-- Right: Data Scale Impact -->
                 <div class="ablation-card">
                     <h3 class="ablation-subtitle">Impact of Egocentric Supervision Data Scale</h3>
                     <p class="ablation-desc">
@@ -1004,7 +1106,6 @@
                         </table>
                     </div>
                     
-                    <!-- Spatial Aptitude section inside right card -->
                     <h3 class="ablation-subtitle" style="margin-top: 30px;">Spatial Aptitude Complementarity</h3>
                     <p class="ablation-desc" style="text-align: justify;">
                         To validate the complementarity of the E2E dataset for spatial reasoning, we fine-tuned the Visual Spatial Tuning (VST) model using only E2E data without introducing any SAT-specific training samples. Prior to fine-tuning, VST attained an overall accuracy of 45.33, with particularly low performance on Egocentric Movement (26.09). After fine-tuning on the E2E-3M dataset, overall accuracy increased to <strong>59.33</strong>, while Egocentric Movement improved markedly to <strong>91.30</strong>. These results indicate that E2E supervision yields targeted improvements in egocentric and dynamic spatial reasoning, complementing static spatial priors.
