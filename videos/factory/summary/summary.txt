@@ -1,0 +1,1 @@
+{"episode_index": 26747, "task": "What activity is taking place?", "sub_task": "The person is assembling two metal parts together, holding one part in each hand and then joining them."}

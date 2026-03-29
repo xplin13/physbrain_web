@@ -1,0 +1,1 @@
+{"question":"What attribute of the object helps keep the cards together during handling?","answer":"The deck of cards is held together by an elastic band wrapped around it, which keeps the cards aligned and prevents them from separating when a hand moves or grasps the deck."}

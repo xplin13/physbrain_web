@@ -1,0 +1,8 @@
+  {
+    "episode_index": 57605,
+    "chunk_index": 0,
+    "sample_index": 5,
+    "question": "How is the croissant being manipulated in these frames?",
+    "answer": "The right hand initially grasps the croissant and lifts it away from the blue bowl. Then, the hand moves the croissant towards the edge of the table, maintaining a firm grip throughout the sequence.",
+    "mode": "mechanics"
+  }

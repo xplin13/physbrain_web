@@ -1,0 +1,1 @@
+{"question": "What path does the hand or object follow?", "answer": "The right hand holding the knife follows a vertical downward path to cut through the meat, while the left hand uses chopsticks to hold the meat steady."}

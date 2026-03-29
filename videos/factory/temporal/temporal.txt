@@ -1,0 +1,1 @@
+{"episode_index": 63640, "task": "How does the motion unfold over time?", "sub_task": "Initially, the right hand picks a small metal piece from the blue bin. Then, the left hand holds another metal piece steady. After that, the right hand brings the picked piece closer to the one held by the left hand. Finally, both hands align the pieces together."}

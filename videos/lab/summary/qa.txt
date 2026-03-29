@@ -1,0 +1,8 @@
+  {
+    "episode_index": 792,
+    "chunk_index": 0,
+    "sample_index": 2,
+    "question": "What happens in this 2-second snippet?",
+    "answer": "Initially, the right hand picks up a lid while the left hand holds a cup. Then, the right hand aligns the lid with the cup and presses it down to secure it. Finally, both hands work together to ensure the lid is tightly closed on the cup.",
+    "mode": "summary"
+  }

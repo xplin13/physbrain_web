@@ -1,0 +1,8 @@
+{
+    "episode_index": 2063,
+    "chunk_index": 0,
+    "sample_index": 2,
+    "question": "What happens first, then, and finally within this sequence?",
+    "answer": "Initially, the right hand lifts a purple block labeled “10” from the surface. Then, the right hand moves the block toward the circular clock toy. Finally, the right hand places the block into its corresponding slot on the toy and releases it.",
+    "mode": "temporal"
+  }

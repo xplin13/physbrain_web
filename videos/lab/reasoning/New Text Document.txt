@@ -1,0 +1,2 @@
+ "question": "What is the immediate purpose of the right hand's action on the bookshelf?",
+    "answer": "The right hand removes a book from the bookshelf, suggesting the immediate purpose is to take out the book for use or relocation.

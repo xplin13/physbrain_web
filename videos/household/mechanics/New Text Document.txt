@@ -1,0 +1,1 @@
+{ "question": "What motions or forces are applied?", "answer": "The right hand holds a pen and moves it in a circular motion to fill in a section of the drawing, while the left hand stabilizes the notebook by holding it down."}

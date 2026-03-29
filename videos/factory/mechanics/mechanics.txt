@@ -1,0 +1,1 @@
+{"episode_index": 27845, "task": "What technique is used to perform this action?", "sub_task": "The right hand uses a grasp motion to pick up the metal blank and then places it into the machine."}

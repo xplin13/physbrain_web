@@ -1,0 +1,8 @@
+{
+    "episode_index": 57047,
+    "chunk_index": 0,
+    "sample_index": 1,
+    "question": "What is the trajectory of the right hand's motion with the purell bottle?",
+    "answer": "The right hand initially reaches toward the Purell bottle on the table, then lifts it upward and slightly to the right. The hand moves the bottle over the open box and releases it, allowing the bottle to drop inside.",
+    "mode": "trajectory"
+  }
